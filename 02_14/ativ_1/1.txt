@@ -1,0 +1,44 @@
+Int a
+Boolean b 
+String c
+Array d[2]
+Tuplo e[3]
+Lista f[4]
+
+ATRIB a 5
+ATRIB b TRUE
+ATRIB c "BOAS"
+ATRIB d 2 1
+ATRIB e 2 1
+ATRIB f 2 1
+
+READ a
+
+WRITE a
+
+SE b ATRIB a 4
+
+CASO a
+5 WRITE a
+6 WRITE b
+CASO
+
+ENQ X = 5 
+FAZER WRITE a
+
+REPETIR WRITE a
+ATE b = 2
+
+PARA 5 
+FAZER WRITE a
+
+ATRIB a 5+3
+
+WRITE a[2]
+
+WRITE f.len
+
+FUN nome (a)
+Int aa
+ATRIB aa 5*a
+RET aa
