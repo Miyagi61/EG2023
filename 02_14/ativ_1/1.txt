@@ -1,3 +1,9 @@
+_id {a}
+Int aa
+ATRIB aa 5*a
+RET aa
+
+
 Int a
 Boolean b 
 String c
@@ -8,9 +14,9 @@ Lista f[4]
 ATRIB a 5
 ATRIB b TRUE
 ATRIB c "BOAS"
-ATRIB d 2 1
-ATRIB e 2 1
-ATRIB f 2 1
+ATRIB d [2, 1]
+ATRIB e (2, 1)
+ATRIB f [2, 1]
 
 READ a
 
@@ -23,22 +29,17 @@ CASO a
 6 WRITE b
 CASO
 
-ENQ X = 5 
-FAZER WRITE a
+ENQ x = 5 
+FAZER { WRITE a }
 
-REPETIR WRITE a
+REPETIR  WRITE a 
 ATE b = 2
 
 PARA 5 
-FAZER WRITE a
+FAZER { WRITE a }
 
 ATRIB a 5+3
 
-WRITE a[2]
-
 WRITE f.len
 
-FUN nome (a)
-Int aa
-ATRIB aa 5*a
-RET aa
+WRITE a[2]

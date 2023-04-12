@@ -1,0 +1,96 @@
+programa: funcao* item+
+
+item: declaracao
+    | instrucao
+
+declaracao: TIPO ID val?
+
+instrucao: atrib
+        | leitura
+        | escrita
+        | selecao
+        | repeticao
+
+atrib: ATRIB ID exp
+
+leitura: READ ID
+escrita: WRITE exp
+
+selecao: SE exp instrucao
+        | CASO ID (val item)+ CASO
+
+repeticao: "ENQ" exp "FAZER" "{" item "}"
+        | "REPETIR" item "ATE" exp 
+        | PARA NUM FAZER "{" item "}"
+
+
+
+funcao: FUNCAO_ID PARAMS item+ RETURN exp
+
+exp: valor (op valor)*
+
+op: "+"
+    | "-"
+    | "*"
+    | "/"
+    | "%"
+    | "^"
+    | "."
+    | "cons"
+    | "snoc"
+    | "in"
+    | "="
+
+
+valor: ID
+    | val
+    | ID "[" exp "]"
+    | "head" ID
+    | "tail" ID
+    | funcao
+
+val: NUM
+    | STRING
+    | lista
+    | bool
+
+lista: "[" val (VIR val)* "]"
+    | "(" val (VIR val)* ")"
+    | "[" "]"
+    | "(" ")"
+
+VIR: ","
+
+bool: "TRUE"
+    | "FALSE"
+
+ID: /[a-z]+/
+NUM: /[0-9]|([1-9][0-9]*)/
+STRING: ESCAPED_STRING
+
+TIPO: "Int"
+    | "Boolean"
+    | "String"
+    | "Array"
+    | "Tuplo"
+    | "Lista"
+
+ATRIB: "ATRIB"
+
+SE: "SE"
+CASO: "CASO"
+ENQ: "ENQ"
+
+PARA: "PARA"
+FAZER: "FAZER"
+
+FUNCAO_ID: /_[a-z]+/
+PARAMS: "{" (ID (VIR ID)*)* "}"
+RETURN: "RET"
+
+READ: "READ"
+WRITE: "WRITE"
+
+%import common.WS
+%import common.ESCAPED_STRING
+%ignore WS
