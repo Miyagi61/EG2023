@@ -10,6 +10,6 @@ class Gramatica(Transformer):
 
 p = Lark(gramatica, start="programa") 
 
-tree = p.parse(open("1.txt", "r").read())
+tree = p.parse(open("testes.txt", "r").read())
 
 data = Transformer().transform(tree) # chamar o transformer para obter
